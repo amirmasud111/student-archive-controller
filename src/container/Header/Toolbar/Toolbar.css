@@ -1,0 +1,43 @@
+.toolbar {
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 90;
+    direction: rtl;
+}
+
+.showNav {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.showMenu{
+    display: none;
+}
+
+.toolbar nav {
+    height: 100%;
+}
+
+@media(max-width:499px) {
+
+    .showMenu{
+        display: block;
+    }
+
+    .showNav {
+        display: none;
+    }
+}
