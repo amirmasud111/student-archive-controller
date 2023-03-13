@@ -2,22 +2,19 @@ import React from "react";
 import './students.css'
 import Button from "../../UI/buttons/button";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 const Student = (props) => {
     return (
         <div className="students">
             <label>شماره دانش آموزی : {props.id} </label>
-            <label>نام و نام خانوادگی  </label>
-            <input type="text" value={props.name} onChange={props.nameChanged}></input>
+            <label>نام و نام خانوادگی : {props.name} </label>
 
-            <label> کلاس </label>
-            <input type="text" value={props.classNumber} onChange={props.classChanged} ></input>
+            <label> کلاس : {props.classNumber}</label>
 
-            <label> شماره تلفن  </label>
-            <input type="number" value={props.phoneNumber} onChange={props.numberChanged}></input>
+            <label> شماره تلفن : {props.phoneNumber} </label>
 
-            <label>  ایمیل  </label>
-            <input type="email" value={props.email} onChange={props.emailChanged}></input>
+            <label>  ایمیل : {props.email} </label>
 
             <label>
                 <Button btnType="danger"
@@ -25,6 +22,12 @@ const Student = (props) => {
                 >
                     حذف
                 </Button>
+                <Link to={"/student/" + props.id}>
+                    <Button btnType="success"
+                    >
+                        ویرایش
+                    </Button>
+                </Link>
             </label>
         </div>
     )
@@ -32,10 +35,10 @@ const Student = (props) => {
 
 export default React.memo(Student);
 Student.propTypes = {
-    id:PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    classNumber:PropTypes.number.isRequired,
-    phoneNumber:PropTypes.number.isRequired,
-    email:PropTypes.string.isRequired,
-    deleted:PropTypes.func.isRequired
+    classNumber: PropTypes.number.isRequired,
+    phoneNumber: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    deleted: PropTypes.func.isRequired
 }

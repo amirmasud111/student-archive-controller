@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import './App.css';
 import Students from './components/students/students';
 import Button from './components/UI/buttons/button';
 import NewStudnet from './components/students/newStudent/newStudent';
 import Toolbar from './container/Header/Toolbar/Toolbar';
-import Sidebar from './container/Header/sidebar/sidebar';
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
+import Sidebar from './container/Header/sidebar/sidebar';
+import HomePage from './pages/HomePage';
+import AddStudent from './pages/AddStudentPage';
+import EditStudent from './pages/EditStudent';
 
 function App() {
 
@@ -30,7 +35,7 @@ function App() {
   }, [studentName])
 
   useEffect(() => {
-    inputElement.current.focus();
+    // inputElement.current.focus();
   }, [])
 
   const nameChangedHandler = (event, id) => {
@@ -135,44 +140,61 @@ function App() {
     }
     );
     setStudents(newStudentState);
-    setStudentName(null);
-    setStudentClass(null);
-    setStudentPhoneNumber(null);
-    setStudentEmail(null);
+    setStudentName("");
+    setStudentClass("");
+    setStudentPhoneNumber("");
+    setStudentEmail("");
   }
 
   return (
-    <div className="App">
 
+
+    <BrowserRouter>
+      <div className="App">
+
+
+        <Toolbar />
+
+
+        {/* <NewStudnet studentName={studentName}
+          studentClass={studentClass}
+          studentPhoneNumber={studentPhoneNumber}
+          studentEmail={studentEmail}
+          studentNameHandler={studentNameHandler}
+          studentClassHandler={studentClassHandler}
+          studentPhoneNumberHandler={studentPhoneNumberHandler}
+          studentEmailHandler={studentEmailHandler}
+          addStudent={addStudent}
+        /> */}
+        {/* <Button btnType="success" clicked={toggleHandler}>
+          تغییر وضعیت نمایش
+        </Button> */}
+        {/* <input type="text" value={searchBarValue} onChange={searchFilterFunction} ref={inputElement} style={{ marginTop: "70px" }} />
     
-      <Toolbar />
-      <NewStudnet studentName={studentName}
-        studentClass={studentClass}
-        studentPhoneNumber={studentPhoneNumber}
-        studentEmail={studentEmail}
-        studentNameHandler={studentNameHandler}
-        studentClassHandler={studentClassHandler}
-        studentPhoneNumberHandler={studentPhoneNumberHandler}
-        studentEmailHandler={studentEmailHandler}
-        addStudent={addStudent}
+        <Students
+          studentsList={studentsTate}
+          nameChanged={nameChangedHandler}
+          classChanged={classChangedHandler}
+          numberChanged={numberChangedHandler}
+          emailChanged={emailChangedHandler}
+          deleted={deleteStudent}
+          toggle={toggle}
+        /> */}
 
-      />
-      <input type="text" value={searchBarValue} onChange={searchFilterFunction} ref={inputElement} />
-      <Button btnType="success" clicked={toggleHandler}>
-        تغییر وضعیت نمایش
-      </Button>
+        {/* <Route path="/" render={() => {
+            <h1 style={{ marginTop: "200px" }}>React is here !</h1>
+          }} /> */}
 
-      <Students
-        studentsList={studentsTate}
-        nameChanged={nameChangedHandler}
-        classChanged={classChangedHandler}
-        numberChanged={numberChangedHandler}
-        emailChanged={emailChangedHandler}
-        deleted={deleteStudent}
-        toggle={toggle}
-      />
-      <Button btnType="success" clicked={executeScroll}>scroll up</Button>
-    </div>
+        <Switch>
+          <Route path='/' exact component={HomePage} />
+          <Route path='/add-student' exact component={AddStudent} />
+          <Route path='/student/:id' exact component={EditStudent} />
+        </Switch>
+
+        {/* <Button btnType="success" clicked={executeScroll}>scroll up</Button> */}
+      </div>
+
+    </BrowserRouter >
   );
 }
 

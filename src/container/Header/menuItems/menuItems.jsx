@@ -6,11 +6,16 @@ const MenuItems = () => {
 
     return (
         <ul className="menuItems">
-            <MenuItem link="/" active>
+            <MenuItem link="/">
                 صفحه اصلی
             </MenuItem>
-            <MenuItem link="/">
-                صفحه دانش آموزان
+            <MenuItem link={{
+                pathname:"/add-student",
+                search:"?sort=name",
+                hash:"#the-hash"
+            }}
+            >
+                اضافه کردن دانش آموزان
             </MenuItem>
         </ul>
     )

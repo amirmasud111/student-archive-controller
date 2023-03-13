@@ -28,7 +28,7 @@ const Button = (props) => {
 export default React.memo(Button);
 Button.propTypes = {
     children: PropTypes.string.isRequired,
-    clicked: PropTypes.func.isRequired,
+    clicked: PropTypes.func,
     btnType: PropTypes.string
 }
 Button.defaultProps = {

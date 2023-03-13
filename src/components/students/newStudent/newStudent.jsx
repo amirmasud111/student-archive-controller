@@ -1,17 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
 import classes from "./newStudent.module.css";
 import Button from "../../UI/buttons/button";
 import PropTypes from 'prop-types';
 import WithClass from "../../hoc/WithClass";
-import Wrapper from "../../hoc/Wrapper";
+import { withRouter } from "react-router";
 
 
 const NewStudent = (props) => {
     const { studentName, studentClass, studentPhoneNumber, studentEmail } = props;
     const { studentNameHandler, studentClassHandler, studentPhoneNumberHandler, studentEmailHandler, addStudent } = props
-    return (
 
-        <Wrapper>
+    useEffect(() => {
+        // console.log(props.history)
+    }, []);
+
+    return (
+        <>
             <h1>اضافه کردن دانش آموز</h1>
 
             <label>نام و نام خانوادگی</label>
@@ -30,11 +35,11 @@ const NewStudent = (props) => {
                 اضافه کردن
             </Button>
 
-        </Wrapper>
+        </>
     )
 }
 
-export default React.memo(WithClass(NewStudent, classes.newStudent));
+export default React.memo(withRouter(WithClass(NewStudent, classes.newStudent)));
 NewStudent.propTypes = {
     studentName: PropTypes.string.isRequired,
     studentClass: PropTypes.number.isRequired,
